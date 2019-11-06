@@ -3,6 +3,7 @@
       <p>账号:<input type="text" v-model="username"></p>
       <p>密码:<input :type="type" v-model="userpwd"><span :class="['iconfont',flag?'icon-yanjing':'icon-yanjing_bi']" @click="yan"></span></p>
       <button @click="submit">登陆</button>
+      <p><router-link to="/login2">注册账号</router-link></p>
   </div>
 </template>
 
