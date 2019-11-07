@@ -1,4 +1,5 @@
 const user = require('./src/data/user.json')
+const list = require('./src/data/list.json')
 
 const fs = require('fs')
 
@@ -8,6 +9,10 @@ module.exports = {
     devServer: {
         open: true,
         before(app) {
+            /**
+             * 登陆校验
+             * 
+            */
             app.post("/login", bodyparser.json(), (req, res) => {
                 let { username, userpwd } = req.body;
                 let obj = user.find(item => item.name == username)
@@ -25,15 +30,19 @@ module.exports = {
                     }
                 }
             }),
+            /**
+            * 注册校验
+            * 
+           */
                 app.post('/zhuche', bodyparser.json(), (req, res) => {
                     let { username, userpwd } = req.body;
 
                     let obj = {
                         "id": new Date() * 1,
                         "name": username,
-                        "nick": "双弹瓦斯",
+                        "nick": "双刹弹射",
                         "pwd": userpwd,
-                        "avator": "/img/000.png",
+                        "avator": "/img/3.png",
                         "age": 18
                     }
                     if (user.find(item => item.name == username)) {
@@ -51,6 +60,72 @@ module.exports = {
                             token: new Date() * 1
                         })
                     }
+                }),
+                /**
+                 * 请求页面数据
+                 */
+                app.get('/getlist',(req,res)=>{
+                    res.send(list)
+                }),
+
+                /**
+                 * 点赞
+                 */
+                app.get('/dianzan',(req,res)=>{
+                    let {id}=req.query
+
+                    let obj=list.find(item=>item.publishID==id)
+
+                    if(obj.zanFlag){
+                        obj.zanFlag=false
+                        obj.zanNum--
+                    }else{
+                        obj.zanFlag=true
+                        obj.zanNum++
+                    }
+                    res.send(list)
+                }),
+                /**
+                 * 收藏
+                 */
+                app.get('/shochang',(req,res)=>{
+                    let {id}=req.query
+
+                    let obj=list.find(item=>item.publishID==id)
+
+                    obj.store=!obj.store
+
+                    res.send(list)
+                }),
+                /**
+                 * 评论框显隐
+                 */
+                app.get('/pinglun',(req,res)=>{
+                    let {id}=req.query
+
+                    let obj=list.find(item=>item.publishID==id)
+
+                    obj.flag=!obj.flag
+
+                    res.send(list)
+                }),
+                /**
+                 * 提交评论
+                 */
+                app.post('/pinglun2',bodyparser.json(),(req,res)=>{
+                    let {id,txt,user}=req.body
+
+                    let obj=list.find(item=>item.publishID==id)
+
+                    let commentObj={
+                            "userID":user.id,
+                            "nick":user.nick,
+                            "avator":user.avator,
+                            "txt":txt  
+                        }
+                        obj.comment.push(commentObj)
+                        obj.flag=false
+                        res.send(list)
                 })
         }
     }

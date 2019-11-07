@@ -14,10 +14,10 @@ const routes = [
       { path: '/main/quanz', component: () => import('../views/main/Quanz.vue') },
       {
         path: '/main/my', component: () => import('../views/main/My.vue'),
-        beforeEnter:(to,from,next)=>{
-          if(!localStorage.token){
+        beforeEnter: (to, from, next) => {
+          if (!localStorage.token) {
             next("/login")
-          }else{
+          } else {
             next()
           }
         }
@@ -32,7 +32,9 @@ const routes = [
   },
   {
     path: '/login2', component: () => import('../views/Login2.vue')
-  }
+  },
+  { path: '/sc', component: () => import('../views/my/Sc.vue') },
+  { path: '/gr', component: () => import('../views/my/Gr.vue') }
 ]
 
 const router = new VueRouter({

@@ -3,17 +3,18 @@
         "userID":1003,
         "publishID":0,
         "nick":"蜡笔小新",
-        "avator":"1.png",
+        "avator":"/img/1.png",
         "publishtime":"2019-06-01",
         "txt":"一家人烧烤好开心！",
         "zanNum":34,
         "zanFlag":false,
         "store":false,
+        "flag":false,
         "comment":[
             {
               "userID":1002,
               "nick":"张三丰",
-              "avator":"zhangsanfeng.png",
+              "avator":"/img/zhangsanfeng.png",
               "txt":"好香啊！"  
             }
         ]
@@ -21,23 +22,27 @@
         "userID":1001,
         "publishID":2,
         "nick":"马云",
-        "avator":"mayun.png",
+        "avator":"/img/mayun.png",
         "publishtime":"2019-06-01",
-        "imgs":["al1.png","al2.png"],
+        "imgs":["/img/al1.png","/img/al2.png"],
         "txt":"退休后的首份季报来了！阿里三季度收入大增40%",
         "zanNum":34,
         "zanFlag":false,
-        "store":false
+        "store":false,
+        "flag":false,
+        "comment":[]
     },{
-        "userID":1001,
+        "userID":1003,
         "publishID":3,
         "nick":"马云",
-        "avator":"mayun.png",
+        "avator":"/img/mayun.png",
         "publishtime":"2019-06-01",
-        "imgs":["tf1.png","tf2.png","tf3.png"],
+        "imgs":["/img/tf1.png","/img/tf2.png","/img/tf3.png"],
         "txt":"TFboys发展各不同，身价对比差距明显，他的代言费有千万",
         "zanNum":34,
         "zanFlag":false,
-        "store":false
+        "store":false,
+        "flag":false,
+        "comment":[]
     }
 ]

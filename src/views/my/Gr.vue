@@ -1,7 +1,7 @@
 <template>
-      <keep-alive>
-      <router-view></router-view>
-      </keep-alive>
+  <div class="Gr">
+      个人
+  </div>
 </template>
 
 <script>

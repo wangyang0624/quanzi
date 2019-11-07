@@ -1,9 +1,10 @@
 <template>
   <div class="dengl">
-      <p>账号:<input type="text" v-model="username"></p>
-      <p>密码:<input :type="type" v-model="userpwd"><span :class="['iconfont',flag?'icon-yanjing':'icon-yanjing_bi']" @click="yan"></span></p>
+        <div class="D-header">登陆</div> 
+      <p><input type="text" v-model="username" placeholder="账号"></p>
+      <p><input :type="type" v-model="userpwd" placeholder="密码"><span :class="['iconfont',flag?'icon-yanjing':'icon-yanjing_bi']" @click="yan"></span></p>
       <button @click="submit">登陆</button>
-      <p><router-link to="/login2">注册账号</router-link></p>
+      <router-link to="/login2" tag="span" class="span">注册账号</router-link>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ export default {
                    }else{
                        this.getuser(data.data)
                        localStorage.token=data.token
+                       localStorage.user=JSON.stringify(data.data)
                        this.$router.push('/')
                    }
                 })
@@ -49,5 +51,10 @@ export default {
 </script>
 
 <style>
-
+    .D-header{background: crimson; width: 100%;height: 50px;text-align: center;line-height: 50px}
+    .dengl p{width: 80%;height: 50px; margin: 10px 0;}
+    .dengl p>input {padding: 0 5px; width: 90%;height: 40px;border: 0;background: #ccc;outline: none;margin-left: 50px;}
+    .dengl button{width: 80%;height: 50px;border: 0; margin: 15px 35px;}
+    .dengl p>span{position: fixed;top: 130px;right: 70px;}
+    .span{text-align: center; display: block}
 </style>
